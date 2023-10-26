@@ -1,6 +1,7 @@
 # Table of contents
 
 * [JAVA](README.md)
-  * [자바에 대하여](java/undefined.md)
+  * [Base of Java](java/base-of-java.md)
   * [JVM](java/jvm.md)
   * [Garbage Collection](java/garbage-collection.md)
+  * [Variable](java/variable.md)
