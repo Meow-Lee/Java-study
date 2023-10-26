@@ -23,7 +23,7 @@ description: About JVM
 
 ### 4. Java 프로그램 실행 과정
 
-<figure><img src=".gitbook/assets/JVM.png" alt=""><figcaption><p>JVM</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/JVM.png" alt=""><figcaption><p>JVM</p></figcaption></figure>
 
 * 프로그램이 시작되면 실행될 프로그램의 메모리를 할당받아 용도에 따라 나누어 관리 (이 때 메모리는 Runtime Data Area에서 관리)
 * 자바 컴파일러가 자바 소스코드를 읽어 자바 바이트코드로 변환

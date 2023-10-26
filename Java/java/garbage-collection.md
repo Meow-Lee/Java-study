@@ -10,7 +10,7 @@ description: About GC
 
 ### 2. GC 과정
 
-<figure><img src=".gitbook/assets/GC.png" alt=""><figcaption><p>GC</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/GC.png" alt=""><figcaption><p>GC</p></figcaption></figure>
 
 * JVM이 잠시 실행을 멈추고 GC를 실행하는 Thread를 제외한 나머지 Thread들의 작업을 중단 후, 사용하지 않는 메모리를 제거하고 작업 재개
 * GC의 작업은 Young에 대한 Minor GC와 Old에 대한 Major GC로 구분
@@ -29,7 +29,7 @@ description: About GC
 
 ### 3. GC 소멸 대상 선정 원리
 
-<figure><img src=".gitbook/assets/reachability.png" alt=""><figcaption><p>Reachability</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/reachability.png" alt=""><figcaption><p>Reachability</p></figcaption></figure>
 
 * Haep 내의 객체 중 Garbage를 찾아 회수
 * Garbage란, 참조되고 있지 않은 객체를 뜻함
