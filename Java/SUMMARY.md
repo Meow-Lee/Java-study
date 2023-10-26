@@ -2,3 +2,4 @@
 
 * [자바에 대하여](README.md)
 * [JVM](jvm.md)
+* [Garbage Collection](garbage-collection.md)
