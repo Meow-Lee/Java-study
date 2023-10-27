@@ -12,8 +12,10 @@
 * [JVM](java/jvm.md)
 * [Garbage Collection](java/garbage-collection.md)
 * [Variable](java/variable.md)
+* [Operator](java/operator.md)
 
 ## Algorithm
 
 * [Stack & Queue](algorithm/stack-and-queue.md)
 * [PriorityQueue](algorithm/priorityqueue.md)
+* [Union-Find](algorithm/union-find.md)
