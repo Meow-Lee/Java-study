@@ -1,13 +1,17 @@
-# Design Principles
+---
+description: 사용자 관점에서 더욱 편리한 서비스를 만들기 위해 고민하는 백엔드 희망 개발자입니다.
+---
 
-### 🤝Trust
+# About Me
 
-Trust the process Donec id elit non mi porta gravida at eget metus. Nullam quis risus eget urna mollis ornare vel eu leo.
+### Name : 이명모
 
-### 🛳 Ship&#x20;
+#### Education : 한국외국어대학교 컴퓨터전자시스템공학 전공 / 독일어통번역학 부전공
 
-With thoughtful and consistent interfaces, praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas sed diam eget risus varius blandit sit amet non magna.
+#### Certificate : 정보처리기사
 
-### 🙇‍♀️ Align
+#### Foreing Language Certificate : OPIc IM2
 
-Our single source of truth is integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.
+#### Stack : Java, SpringBoot, JPA, MySQL, C\#
+
+#### Tools : IntelliJ, Visual Studio, Github

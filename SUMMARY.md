@@ -1,10 +1,10 @@
 # Table of contents
 
-* [🖌 Getting started](README.md)
+* [🖌 Welcome!](README.md)
 
 ## INTRODUCTION
 
-* [Design Principles](introduction/design-principles.md)
+* [About Me](introduction/design-principles.md)
 
 ## Java
 

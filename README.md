@@ -1,9 +1,9 @@
-# 🖌 Getting started
+---
+coverY: 0
+---
 
-## Welcome !
+# 🖌 Welcome!
 
-A design system is a product, and similar best practices to product docs apply when documenting a design system. Offering succinct ways to get started is a great way to introduce the concepts of your design system, while empowering folks to use it for their needs.
+이곳은 Meow-Lee가 공부하고 요약하며 기록하는 저장소입니다.
 
-{% hint style="info" %}
-Use this template to introduce the concept of your design system. Outlining basic principles and ways of working to get every team on the same page.
-{% endhint %}
+틀린 내용이 있을지 모른다는 점 감안해주시고 최대한 정확하고 간결하게 기록해보도록 노력하겠습니다.
