@@ -1,2 +1,2 @@
-# Java-study
-자바 공부
+# Study
+Java, Algorithm, Spring etc..
