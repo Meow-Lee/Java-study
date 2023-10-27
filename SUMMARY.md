@@ -12,3 +12,8 @@
 * [JVM](java/jvm.md)
 * [Garbage Collection](java/garbage-collection.md)
 * [Variable](java/variable.md)
+
+## Algorithm
+
+* [Stack & Queue](algorithm/stack-and-queue.md)
+* [PriorityQueue](algorithm/priorityqueue.md)
