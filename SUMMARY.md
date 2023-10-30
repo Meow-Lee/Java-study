@@ -13,6 +13,7 @@
 * [Garbage Collection](java/garbage-collection.md)
 * [Variable](java/variable.md)
 * [Operator](java/operator.md)
+* [Array](java/array.md)
 
 ## Algorithm
 
