@@ -12,6 +12,7 @@ description: About Array
 
 * for문을 이용한 방법
 * System.arraycopy()
+* clone()
 
 ```java
 // for문 사용
@@ -21,6 +22,9 @@ for(int i=0; i<num.length; i++){
     
 // System.arraycopy() 사용
 System.arraycopy(num, 0, newNum, 0, num.length);
+
+// clone() 사용
+int[] anotherNum = num.clone();
 
 // num[0]에서 newNum[0]으로 num.length개의 데이터를 복사
 ```
@@ -43,5 +47,3 @@ char[] tmp = str.toCharArray();
 // print char array
 Sytem.out.println(chArr);
 ```
-
-### 4. 다차원 배
