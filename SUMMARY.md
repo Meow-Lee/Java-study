@@ -14,7 +14,7 @@
 * [Variable](java/variable.md)
 * [Operator](java/operator.md)
 * [Array](java/array.md)
-* [Object-oriented Programming](java/object-oriented-programming.md)
+* [Object-oriented Programming 1](java/object-oriented-programming-1.md)
 
 ## Algorithm
 
