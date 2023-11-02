@@ -81,6 +81,7 @@ description: About Object-oriented Programming
 #### Overriding
 
 * 상위 클래스에 있는 메서드를 하위 클래스에서 재정의하는 것
+* 상속받은 메서드의 내용을 변경하는 것
 
 ### 9. 생성자
 

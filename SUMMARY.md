@@ -15,6 +15,9 @@
 * [Operator](java/operator.md)
 * [Array](java/array.md)
 * [Object-oriented Programming 1](java/object-oriented-programming-1.md)
+* [Object-oriented Programming 2](java/object-oriented-programming-2.md)
+* [Exception Handling](java/exception-handling.md)
+* [Many Classes](java/many-classes.md)
 
 ## Algorithm
 
