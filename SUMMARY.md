@@ -18,6 +18,9 @@
 * [Object-oriented Programming 2](java/object-oriented-programming-2.md)
 * [Exception Handling](java/exception-handling.md)
 * [Many Classes](java/many-classes.md)
+* [Date, Time and Formatting](java/date-time-and-formatting.md)
+* [Collections Framework](java/collections-framework.md)
+* [Generics](java/generics.md)
 
 ## Algorithm
 
