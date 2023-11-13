@@ -155,7 +155,7 @@ public class ThreadEx1 {
 * 공유 데이터를 사용하는 코드 영역을 임계 영역으로 지정하고, 공유 데이터(객체)가 가지고 있는 lock을 획득한 단 하나의 스레드만 이 영역 내의 코드를 수행할 수 있게 함
 * **스레드의 동기화** -> 한 스레드가 진행 중인 작업을 다른 스레드가 간섭하지 못하도록 막는 것
 
-### synchronized를 이용한 동기화
+#### synchronized를 이용한 동기화
 
 * 임계 영역을 설정하는 것에 사용
 * lock의 획득과 반납이 자동적으로 이루어지므로, 임계 영역만 지정해주면 됨
@@ -168,3 +168,36 @@ public synchronized void calcSum() { ... }
 synchronized(객체의 참조변수) { ... }
 ```
 
+#### wait()와 notify()
+
+* synchronized로 동기화해서 공유 데이터를 보호하는 것은 좋지만, 특정 스레드가 객체의 lock을 가진 채로 오랜 시간을 보내지 않도록 하는 것도 중요
+* 만약, 계좌에 출금할 돈이 부족해서 스레드가 lock을 보유한 채로 돈이 입금될 때까지 오랜 시간을 보낸다면, 다른 스레드들은 객체의 lock을 기다리느라 작업이 진행되지 못할 것
+* 동기화된 임계 영역의 코드를 수행하다가 작업을 더 이상 진행할 상황이 아니면, wait()를 우선 호출해 스레드가 lock을 반납하고 기다리게 함
+* 그러다 나중에 작업을 진행할 수 있는 상황이 되면 notify()를 호출해, 작업을 다시 진행
+* wait()가 호출되면 실행 중이던 스레드는 해당 객체의 대기실(waiting pool)에서 대기
+* waiting pool은 객체마다 존재하므로 notifyAll()이 호출된다고 해서 모든 객체의 waiting pool에 있는 스레드가 깨워지는 것이 아니고, notifyAll()이 호출된 객체의 waiting pool에 대기 중인 스레드만 해당
+* notify()는 대기 중인 스레드 중에서 하나를 임의로 선택해서 통지하기 때문에, 운이 나쁘면 특정 스레드는 통지를 받지 못하고 오래 기다리게 되는데, 이를 **기아(starvation)** 현상이라고 함
+* 이를 해결하기 위해 notifyAll()을 사용하지만, 이 경우 여러 스레드가 lock을 얻기 위해 경쟁 하는데, 이를 **경쟁 상태(race condition)** 라고 함
+* 이를 개선하기 위해선 구별해서 통지하는 것이 필요한데, lock과 condition을 이용해 개선할 수 있음
+
+#### Lock과 Condition을 이용한 동기화
+
+* ReentrantLock -> 재진입이 가능한 lock, 가장 일반적인 배타 lock
+* ReentrantReadWriteLock -> 읽기에는 공유적이고, 쓰기에는 배타적인 lock
+* StampedLock -> ReentrantReadWriteLock에 낙관적인 lock의 기능을 추가
+
+#### volatile
+
+* 코어는 메모리에서 읽어온 값을 캐시에 저장하고, 캐시에서 값을 읽어서 작업
+* 같은 값을 읽어올 때는 먼저 캐시에 있는지 확인하고 없을 때만 메모리에서 읽어오기 때문에, 메모리에 저장된 값이 변경되었음에도 캐시에 저장된 값이 갱신되지 않아 값이 다른 경우가 발생
+* volatile을 붙이면 코어가 변수의 값을 읽을 때 메모리에서 읽어와 불일치가 해결
+* 대신, synchronized 블럭을 사용해도 같은 효과를 얻을 수 있음
+* 단, volatile은 변수의 읽기나 쓰기를 원자화 할 뿐, 동기화는 아님
+
+```java
+// volatile
+volatile boolean suspended = false;
+
+// synchronized
+public synchronized void stop() {...}
+```
