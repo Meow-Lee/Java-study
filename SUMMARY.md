@@ -30,6 +30,7 @@
 * [Stack & Queue](algorithm/stack-and-queue.md)
 * [PriorityQueue](algorithm/priorityqueue.md)
 * [Union-Find](algorithm/union-find.md)
+* [Dijkstra](algorithm/dijkstra.md)
 
 ## Thymeleaf
 
