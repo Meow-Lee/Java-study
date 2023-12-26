@@ -31,6 +31,7 @@
 * [PriorityQueue](algorithm/priorityqueue.md)
 * [Union-Find](algorithm/union-find.md)
 * [Dijkstra](algorithm/dijkstra.md)
+* [약수 구하기](algorithm/undefined-1.md)
 
 ## Thymeleaf
 
