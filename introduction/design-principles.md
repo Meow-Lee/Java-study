@@ -57,7 +57,7 @@ description: 사용자 관점에서 더욱 편리한 서비스를 만들기 위�
 * Language : Java, C#, C++
 * Back-End : SpringBoot, JPA, Thymeleaf
 * Database : MySQL
-* Cloud : Docker, Kubernetes
+* &#x20;Infra: Docker, Kubernetes
 * Tools : IntelliJ, Visual Studio, Github / Gitbook
 
 ***
