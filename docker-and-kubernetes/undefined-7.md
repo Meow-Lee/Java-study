@@ -191,3 +191,143 @@ spec:
     image: // 이미지 이름
     ports: // 포트 설정
 ```
+
+## 메타데이터와 스펙 작성 - 디플로이먼트
+
+* 파드가 아이돌 그룹이고 컨테이너는 개인 멤버라면 디플로이먼트는 소속사에 비유할 수 있음
+
+```docker
+// Deployment
+apiVersion:
+kind:
+metadata:
+ name: // 디플로이먼트 이름
+spec:
+ selector: // 셀렉터 설정
+  matchLabels: // 셀렉터가 선택할 관리 대상 테이블
+ replicas: // 레플리카 설정
+ template: // 템플릿(파드의 정보)
+  metadata: // 파드의 메타데이터를 기재
+  spec: // 파드의 스펙을 기재
+```
+
+### 셀렉터의 설정
+
+* 디플로이먼트가 특정한 레이블이 부여된 파드를 관리할 수 있도록 하는 설정
+
+### 레플리카의 설정
+
+* 파드의 레플리카에 대한 관리
+* 파드 수를 몇개로 유지할 것인지 설정(0으로 설정하면 파드가 사라짐)
+
+### 템플릿 작성
+
+* 생성할 파드의 정보를 기재
+* 파드의 이름은 설정하지 않음(파드의 수가 늘어나면 레이블로 관리하는 경우가 많아 필요가 없음)
+
+### 디플로이먼트의 기재 항목
+
+* 주항목 : apiVersion, kind, metadata, spec
+* 중항목 : name, selector, replicas, template
+* 소항목 : matchLabels, metadata, spec
+
+## 실습 - 디플로이먼트
+
+```docker
+// 디플로이먼트 매니페스트 파일 작성
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: apa000dep
+spec:
+ selector:
+  matchLabels:
+   app: apa000kube
+ replicas: 3
+ template:
+  metadata:
+   labels:
+    app: apa000kube
+  spec:
+   containers:
+   - name: apa000ex91
+     image: httpd
+     ports:
+     - containerPort: 80
+```
+
+## 메타데이터와 스펙 작성 - 서비스
+
+* 디플로이먼트와 서비스는 거의 세트라고 생각해도 좋음
+* 서비스의 역할은 파드로 들어오는 요청을 관리하는 것이므로 설정 내용도 통신과 관련된 것
+
+```docker
+apiVersion:
+kind:
+metadata:
+ name: // 서비스 이름
+spec:
+ type: // 서비스의 유형
+ ports: // 포트 설정
+ - port: // 서비스의 포트
+   targetPort: // 컨테이너의 포트
+   protocol: // 통신에 사용되는 프로토콜
+   nodePort: // 워커 노드의 포트
+ selector: // 셀렉터 설정
+```
+
+### 유형 설정
+
+* 유형은 서비스의 종류를 말함
+* 다시 말해 외부로부터 서비스에 어떤 유형의 IP 주소(또는 DNS)로 접근할지를 설정
+* 실무에서는 LoadBalancer로 설정하는 경우가 대부분
+* 도커 데스크톱과 Minikube 모두 로드밸런서가 없기에 NodePort를 통해 실습
+
+<table><thead><tr><th width="236">유형 이름</th><th>내용</th></tr></thead><tbody><tr><td>ClusterIP</td><td>클러스터IP를 통해 서비스에 접근하도록 함(외부에서 접근 불가)</td></tr><tr><td>NodePort</td><td>워커 노드의 IP를 통해 서비스에 접근하도록 함</td></tr><tr><td>LoadBalancer</td><td>로드밸런서의 IP를 통해 서비스에 접근하도록 함</td></tr><tr><td>ExternalName</td><td>파드에서 서비스를 통해 외부로 나가기 위한 설정</td></tr></tbody></table>
+
+### 셀렉터 설정
+
+* 서비스가 특정 레이블이 부여된 파드를 선택적으로 관리하기 위한 설정
+* 다만, matchLabels를 서비스에서는 사용해선 안됨
+* 디플로이먼트와 서비스 모두 셀렉터를 사용해 파드를 지정하는데, 방식이 다름
+* 디플로이먼트는 셀렉터를 설정하면 레이블 셀렉터를 사용하며, '이 조건에 부합할 때'와 같은 설정이 가능하지만 서비스는 리소스를 직접 지정하기 떄문에 해당 레이블을 그대로 기재해야함
+
+## 매니페스트 파일 작성 - 서비스
+
+<pre><code>// Service
+<strong>apiVersion: v1
+</strong>kind: Service
+metadata:
+ name: apa000ser
+spec:
+ type: NodePort
+ ports:
+ - port: 8099
+   targetPort: 80
+   protocol: TCP
+   nodePort: 30080
+ selector:
+  app: apa000kube
+</code></pre>
+
+## <쿠버네티스 명령어>
+
+## 쿠버네티스 명령어
+
+* 매니페스트 파일을 작성하면 파일을 쿠버네티스에 읽어 들이고 실제로 파드를 생성
+* 쿠버네티스를 조작할 때는 kubectl 명령어를 사용
+* kubectl \[커맨드] \[옵션]
+* 도커와 달리, 매니페스트 파일의 내용을 따라 한 번에 모든 리소스를 생성
+* 커맨드 : create, delete, get, set, apply, scale, logs ..
+
+## <쿠버네티스 연습>
+
+## 매니페스트 파일로 파드의 개수 늘리기
+
+* 쿠버네티스는 매니페스트 파일을 데이터베이스(etcd)에 읽어 들이고 등록된 상태를 유지하는 기능을 함
+* 이 상태는 매니페스트 파일을 다시 불러들이면 덮어씌워짐
+* 매니페스트 파일에서 레플리카 수를 변경한 다음, kubectl apply -f \[경로]/\~.yml을 치면 변경됨
+
+## 매니페스트 파일로 아파치를 nginx로 바꾸기
+
+* 매니페스트 파일에서 이미지 이름만 변경해주고 명령어를 입력하면 변경됨
